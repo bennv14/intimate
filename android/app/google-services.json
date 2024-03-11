@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "851454577409",
+    "project_id": "intimate-app-firebase",
+    "storage_bucket": "intimate-app-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851454577409:android:a1a6a714ee59de83696900",
+        "android_client_info": {
+          "package_name": "com.example.intimate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "851454577409-pjuraj2gthmk1v574ep2ureuosqrq2n0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs7RiqGkzR9QosPeA_ArF2D8hIVh6DG6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "851454577409-pjuraj2gthmk1v574ep2ureuosqrq2n0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "851454577409-q4u1jlrupm9lrsrie798eadedqga6o9b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.intimate.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
