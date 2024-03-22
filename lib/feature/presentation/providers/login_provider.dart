@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:intimate/feature/presentation/pages/login/widgets/login_widgets.dart';
 
@@ -30,8 +32,7 @@ class LoginProvider extends ChangeNotifier {
 
   set phoneNumber(String? value) {
     _phoneNumber = value;
-    bool enable = RegExp(r'[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')
-        .hasMatch(_phoneNumber ?? '');
+    bool enable = RegExp(r'^(\+?\d{1,3}[- ]?)?\d{10}$').hasMatch(_phoneNumber ?? '');
     if (enable != _isEnableBTN) {
       _isEnableBTN = enable;
       notifyListeners();
@@ -45,4 +46,33 @@ class LoginProvider extends ChangeNotifier {
     _content = value;
     notifyListeners();
   }
+
+  void doContinue() {
+    if (_content is EmailInput || _content is PhoneNumberInput) {
+      _content = const PasswordInput();
+      _isEnableBTN = false;
+      notifyListeners();
+    } else {
+      log("Continue", name: "Click continue");
+    }
+  }
+
+  void doBack() {
+    if (_content is PasswordInput) {
+      if (_email != null) {
+        _content = const EmailInput();
+        _isEnableBTN = false;
+        notifyListeners();
+      } else {
+        _content = const PhoneNumberInput();
+        _isEnableBTN = false;
+
+        notifyListeners();
+      }
+    } else {
+      log("Back", name: "Click back");
+    }
+  }
+
+  void doForgotPassword() {}
 }
