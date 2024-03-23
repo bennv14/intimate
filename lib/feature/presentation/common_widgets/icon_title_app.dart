@@ -21,7 +21,13 @@ class IconTitleApp extends StatelessWidget {
           ),
         ),
         SizedBox(width: 8.w),
-        Text("Intimate", style: headerLarge.copyWith(fontSize: 37.sp)),
+        Text(
+          "Intimate",
+          style: headerLarge.copyWith(
+            fontSize: 36.sp,
+            fontWeight: FontWeight.w900,
+          ),
+        ),
       ],
     );
   }

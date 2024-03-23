@@ -26,7 +26,7 @@ class IntroducePage extends StatelessWidget {
             Text(
               "Live pics from your friends,\n on your home screen",
               textAlign: TextAlign.center,
-              style: headerMedium,
+              style: headerSmall.copyWith(color: grayTextColor),
             ),
             SizedBox(height: 35.h),
             CustomButton(
@@ -34,13 +34,15 @@ class IntroducePage extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => const SignUpPage()),
               ),
-              borderRadius: BorderRadius.circular(18.sp),
+              borderRadius: BorderRadius.circular(22.sp),
               fillColor: primaryColor,
               height: 60.h,
               width: 196.w,
-              child: Text(
-                "Create an account",
-                style: headerSmall.copyWith(color: darkTextColor),
+              child: Center(
+                child: Text(
+                  "Create an account",
+                  style: headerSmall.copyWith(color: darkTextColor),
+                ),
               ),
             ),
             SizedBox(height: 22.h),

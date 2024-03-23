@@ -2,16 +2,17 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:intimate/feature/presentation/pages/login/widgets/login_widgets.dart';
+import 'package:intimate/feature/presentation/pages/sign_up/widgets/email_sign_up.dart';
+import 'package:intimate/feature/presentation/pages/sign_up/widgets/password_sign_up.dart';
 
-class LoginProvider extends ChangeNotifier {
+class SignUpProvider extends ChangeNotifier {
   String? _email;
   String? _password;
-  String? _phoneNumber;
   bool _isEnableBTN = false;
-  Widget _content = const EmailLogin();
+  Widget _content = const EmailSignUp();
   late final BuildContext _context;
 
-  LoginProvider(this._context);
+  SignUpProvider(this._context);
 
   String? get email => _email;
   set email(String? value) {
@@ -33,15 +34,6 @@ class LoginProvider extends ChangeNotifier {
     }
   }
 
-  set phoneNumber(String? value) {
-    _phoneNumber = value;
-    bool enable = RegExp(r'^(\+?\d{1,3}[- ]?)?\d{10}$').hasMatch(_phoneNumber ?? '');
-    if (enable != _isEnableBTN) {
-      _isEnableBTN = enable;
-      notifyListeners();
-    }
-  }
-
   bool get isEnableBTN => _isEnableBTN;
 
   Widget get content => _content;
@@ -51,8 +43,8 @@ class LoginProvider extends ChangeNotifier {
   }
 
   void doContinue() {
-    if (_content is EmailLogin || _content is PhoneNumberLogin) {
-      _content = const PasswordLogin();
+    if (_content is EmailSignUp) {
+      _content = const PasswordSignUp();
       _isEnableBTN = false;
       notifyListeners();
     } else {
@@ -63,7 +55,7 @@ class LoginProvider extends ChangeNotifier {
   void doBack() {
     if (_content is PasswordLogin) {
       if (_email != null) {
-        _content = const EmailLogin();
+        _content = const EmailSignUp();
         _isEnableBTN = false;
         notifyListeners();
       } else {

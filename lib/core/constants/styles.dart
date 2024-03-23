@@ -6,28 +6,40 @@ TextStyle headerLarge = TextStyle(
   color: Colors.white,
   fontSize: 26.sp,
   fontWeight: FontWeight.bold,
+  fontFamily: "LexendDeca",
 );
 
 TextStyle headerMedium = TextStyle(
   color: textColor,
   fontSize: 22.sp,
   fontWeight: FontWeight.bold,
+  fontFamily: "LexendDeca",
 );
 
 TextStyle headerSmall = TextStyle(
   color: Colors.white,
   fontSize: 18.sp,
   fontWeight: FontWeight.bold,
+  fontFamily: "LexendDeca",
 );
 
 TextStyle textStyle = TextStyle(
   color: Colors.white,
   fontSize: 16.sp,
   fontWeight: FontWeight.normal,
+  fontFamily: "LexendDeca",
+);
+
+TextStyle textSmallStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 12.sp,
+  fontWeight: FontWeight.normal,
+  fontFamily: "LexendDeca",
 );
 
 TextStyle hintTextStyle = TextStyle(
   color: hintColor,
   fontSize: 16.sp,
   fontWeight: FontWeight.normal,
+  fontFamily: "LexendDeca",
 );

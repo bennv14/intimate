@@ -1,3 +1,3 @@
-export 'package:intimate/feature/presentation/pages/login/widgets/email_input.dart';
-export 'package:intimate/feature/presentation/pages/login/widgets/phone_number_input.dart';
-export 'package:intimate/feature/presentation/pages/login/widgets/password_input.dart';
+export 'package:intimate/feature/presentation/pages/login/widgets/email_login.dart';
+export 'package:intimate/feature/presentation/pages/login/widgets/phone_number_login.dart';
+export 'package:intimate/feature/presentation/pages/login/widgets/password_login.dart';

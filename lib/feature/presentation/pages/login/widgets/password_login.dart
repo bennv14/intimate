@@ -3,22 +3,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intimate/core/constants/colors.dart';
 import 'package:intimate/core/constants/styles.dart';
 import 'package:intimate/feature/presentation/common_widgets/custom_button.dart';
-import 'package:intimate/feature/presentation/pages/login/widgets/login_widgets.dart';
 import 'package:intimate/feature/presentation/providers/login_provider.dart';
 import 'package:provider/provider.dart';
 
-class EmailInput extends StatelessWidget {
-  const EmailInput({super.key});
+class PasswordLogin extends StatelessWidget {
+  const PasswordLogin({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Consumer<LoginProvider>(
-      builder: (context, provider, child) => Column(
+      builder: (BuildContext context, LoginProvider provider, Widget? child) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "What's is your email?",
+            "Enter your password",
             style: headerLarge,
           ),
           SizedBox(
@@ -26,7 +25,7 @@ class EmailInput extends StatelessWidget {
           ),
           TextField(
             style: textStyle,
-            onChanged: (value) => provider.email = value,
+            onChanged: null,
             decoration: InputDecoration(
               fillColor: textFieldBG,
               filled: true,
@@ -36,7 +35,7 @@ class EmailInput extends StatelessWidget {
                 ),
                 borderSide: BorderSide.none,
               ),
-              hintText: "Email address",
+              hintText: "Password",
               hintStyle: hintTextStyle,
             ),
           ),
@@ -51,9 +50,9 @@ class EmailInput extends StatelessWidget {
                 vertical: 10.h,
                 horizontal: 20.w,
               ),
-              onTap: () => provider.content = const PhoneNumberInput(),
+              onTap: provider.doForgotPassword,
               child: Text(
-                "Use phone number instead",
+                "Forgot password",
                 style: textStyle.copyWith(fontWeight: FontWeight.bold),
               ),
             ),

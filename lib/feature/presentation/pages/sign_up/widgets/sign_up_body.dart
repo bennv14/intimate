@@ -2,33 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intimate/core/constants/constants.dart';
 import 'package:intimate/feature/presentation/common_widgets/custom_button.dart';
-import 'package:intimate/feature/presentation/providers/login_provider.dart';
+import 'package:intimate/feature/presentation/common_widgets/terms_of_service.dart';
+import 'package:intimate/feature/presentation/providers/sign_up_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../../../common_widgets/terms_of_service.dart';
-
-class LoginBody extends StatelessWidget {
-  const LoginBody({super.key});
+class SignUpBody extends StatelessWidget {
+  const SignUpBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<LoginProvider>(
-      builder: (context, loginProvider, child) {
+    return Consumer<SignUpProvider>(
+      builder: (context, provider, child) {
         return Scaffold(
           body: Column(
             children: [
-              _buildBackButton(loginProvider),
+              _buildBackButton(provider),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 27.w,
                     vertical: 20.h,
                   ),
-                  child: loginProvider.content,
+                  child: provider.content,
                 ),
               ),
               _buildTermOfService(),
-              _buildContinueButton(loginProvider),
+              _buildContinueButton(provider),
             ],
           ),
         );
@@ -36,7 +35,7 @@ class LoginBody extends StatelessWidget {
     );
   }
 
-  Widget _buildContinueButton(LoginProvider loginProvider) {
+  Widget _buildContinueButton(SignUpProvider provider) {
     return Container(
       margin: EdgeInsets.only(
         bottom: 44.h,
@@ -45,9 +44,9 @@ class LoginBody extends StatelessWidget {
       ),
       alignment: Alignment.center,
       child: CustomButton(
-        disable: !loginProvider.isEnableBTN,
-        onTap: loginProvider.doContinue,
-        fillColor: loginProvider.isEnableBTN ? primaryColor : grayButton,
+        disable: !provider.isEnableBTN,
+        onTap: provider.doContinue,
+        fillColor: provider.isEnableBTN ? primaryColor : grayButton,
         borderRadius: BorderRadius.circular(50.r),
         padding: EdgeInsets.symmetric(
           vertical: 10.h,
@@ -59,13 +58,13 @@ class LoginBody extends StatelessWidget {
             Text(
               "Continue",
               style: headerMedium.copyWith(
-                color: loginProvider.isEnableBTN ? darkTextColor : grayTextColor,
+                color: provider.isEnableBTN ? darkTextColor : grayTextColor,
               ),
             ),
             SizedBox(width: 8.w),
             Icon(
               Icons.arrow_forward_rounded,
-              color: loginProvider.isEnableBTN ? darkTextColor : grayTextColor,
+              color: provider.isEnableBTN ? darkTextColor : grayTextColor,
             ),
           ],
         ),
@@ -80,7 +79,7 @@ class LoginBody extends StatelessWidget {
     );
   }
 
-  Widget _buildBackButton(LoginProvider provider) {
+  Widget _buildBackButton(SignUpProvider provider) {
     return Container(
       alignment: Alignment.topLeft,
       padding: EdgeInsets.only(top: 47.h, left: 17.w),

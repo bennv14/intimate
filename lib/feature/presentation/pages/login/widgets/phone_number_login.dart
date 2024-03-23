@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intimate/core/constants/colors.dart';
 import 'package:intimate/core/constants/styles.dart';
 import 'package:intimate/feature/presentation/common_widgets/custom_button.dart';
-import 'package:intimate/feature/presentation/pages/login/widgets/email_input.dart';
+import 'package:intimate/feature/presentation/pages/login/widgets/email_login.dart';
 import 'package:intimate/feature/presentation/providers/login_provider.dart';
 import 'package:provider/provider.dart';
 
-class PhoneNumberInput extends StatelessWidget {
-  const PhoneNumberInput({super.key});
+class PhoneNumberLogin extends StatelessWidget {
+  const PhoneNumberLogin({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class PhoneNumberInput extends StatelessWidget {
                 vertical: 10.h,
                 horizontal: 20.w,
               ),
-              onTap: () => provider.content = const EmailInput(),
+              onTap: () => provider.content = const EmailLogin(),
               child: Text(
                 "Use email instead",
                 style: textStyle.copyWith(fontWeight: FontWeight.bold),
