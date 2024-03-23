@@ -57,13 +57,13 @@ class LoginBody extends StatelessWidget {
             Text(
               "Continue",
               style: headerMedium.copyWith(
-                color: loginProvider.isEnableBTN ? enableTextColor : disableTextColor,
+                color: loginProvider.isEnableBTN ? darkTextColor : disableTextColor,
               ),
             ),
             SizedBox(width: 8.w),
             Icon(
               Icons.arrow_forward_rounded,
-              color: loginProvider.isEnableBTN ? enableTextColor : disableTextColor,
+              color: loginProvider.isEnableBTN ? darkTextColor : disableTextColor,
             ),
           ],
         ),

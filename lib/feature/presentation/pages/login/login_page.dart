@@ -21,7 +21,7 @@ class LogInPage extends StatelessWidget {
       // Callback function to unfocus the primary focus if there is any.
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: ChangeNotifierProvider<LoginProvider>(
-        create: (context) => LoginProvider(),
+        create: (context) => LoginProvider(context),
         child: const LoginBody(),
       ),
     );

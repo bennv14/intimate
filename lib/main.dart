@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intimate/config/theme/theme.dart';
-import 'package:intimate/feature/presentation/pages/login/login_page.dart';
+import 'package:intimate/feature/presentation/pages/introduce/introduce_page.dart';
 import 'package:intimate/firebase_options.dart';
 
 void main() async {
@@ -23,11 +23,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 780),
+      designSize: const Size(375, 810),
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: theme(),
-        home: const LogInPage(),
+        home: const IntroducePage(),
       ),
     );
   }

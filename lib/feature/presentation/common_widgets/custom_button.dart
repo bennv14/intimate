@@ -38,6 +38,7 @@ class CustomButton extends StatelessWidget {
       onTap: disable ? null : onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
+        alignment: Alignment.center,
         height: height,
         width: width,
         padding: padding,

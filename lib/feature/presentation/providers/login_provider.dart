@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:intimate/feature/presentation/pages/introduce/introduce_page.dart';
 import 'package:intimate/feature/presentation/pages/login/widgets/login_widgets.dart';
 
 class LoginProvider extends ChangeNotifier {
@@ -9,6 +10,9 @@ class LoginProvider extends ChangeNotifier {
   String? _phoneNumber;
   bool _isEnableBTN = false;
   Widget _content = const EmailInput();
+  late final BuildContext _context;
+
+  LoginProvider(this._context);
 
   String? get email => _email;
   set email(String? value) {
@@ -70,7 +74,10 @@ class LoginProvider extends ChangeNotifier {
         notifyListeners();
       }
     } else {
-      log("Back", name: "Click back");
+      Navigator.pushReplacement(
+        _context,
+        MaterialPageRoute(builder: (context) => const IntroducePage()),
+      );
     }
   }
 
