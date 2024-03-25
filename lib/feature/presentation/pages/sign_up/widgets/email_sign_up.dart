@@ -23,8 +23,19 @@ class EmailSignUp extends StatelessWidget {
             height: 25.h,
           ),
           TextField(
+            controller: provider.emailController,
+            onSubmitted: (value) {
+              if (provider.isEnableBTN) {
+                provider.doContinue();
+              }
+            },
+            onTapOutside: (event) {
+              FocusScope.of(context).unfocus();
+            },
+            autocorrect: false,
+            enableSuggestions: false,
+            keyboardType: TextInputType.emailAddress,
             style: textStyle,
-            onChanged: (value) => provider.email = value,
             decoration: InputDecoration(
               fillColor: textFieldBG,
               filled: true,

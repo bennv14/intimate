@@ -1,41 +1,48 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:intimate/feature/presentation/pages/home/home_page.dart';
 import 'package:intimate/feature/presentation/pages/login/widgets/login_widgets.dart';
 
 class LoginProvider extends ChangeNotifier {
-  String? _email;
-  String? _password;
-  String? _phoneNumber;
+  late final TextEditingController emailController = TextEditingController();
+  late final TextEditingController passwordController = TextEditingController();
+  late final TextEditingController phoneNumberController = TextEditingController();
+
   bool _isEnableBTN = false;
+  bool _isLoginByEmail = true;
+
   Widget _content = const EmailLogin();
+
   late final BuildContext _context;
 
-  LoginProvider(this._context);
+  LoginProvider(this._context) {
+    emailController.addListener(emailListener);
+    passwordController.addListener(passwordListener);
+    phoneNumberController.addListener(phoneNumberListener);
+  }
 
-  String? get email => _email;
-  set email(String? value) {
-    _email = value;
-    bool enable = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(_email ?? '');
+  String get email => emailController.text;
+  void emailListener() {
+    bool enable =
+        RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(emailController.text);
     if (enable != _isEnableBTN) {
       _isEnableBTN = enable;
       notifyListeners();
     }
   }
 
-  String? get password => _password;
-  set password(String? value) {
-    _password = value;
-    bool enable = _password != null ? _password!.length >= 6 : false;
+  String get password => passwordController.text;
+  void passwordListener() {
+    bool enable = passwordController.text.length >= 6;
     if (enable != _isEnableBTN) {
       _isEnableBTN = enable;
       notifyListeners();
     }
   }
 
-  set phoneNumber(String? value) {
-    _phoneNumber = value;
-    bool enable = RegExp(r'^(\+?\d{1,3}[- ]?)?\d{10}$').hasMatch(_phoneNumber ?? '');
+  String get phoneNumber => phoneNumberController.text;
+  void phoneNumberListener() {
+    bool enable =
+        RegExp(r'^(\+?\d{1,3}[- ]?)?\d{10}$').hasMatch(phoneNumberController.text);
     if (enable != _isEnableBTN) {
       _isEnableBTN = enable;
       notifyListeners();
@@ -48,6 +55,11 @@ class LoginProvider extends ChangeNotifier {
   set content(Widget value) {
     _content = value;
     notifyListeners();
+    if (value is EmailLogin) {
+      _isLoginByEmail = true;
+    } else if (value is PhoneNumberLogin) {
+      _isLoginByEmail = false;
+    }
   }
 
   void doContinue() {
@@ -56,20 +68,22 @@ class LoginProvider extends ChangeNotifier {
       _isEnableBTN = false;
       notifyListeners();
     } else {
-      log("Continue", name: "Click continue");
+      Navigator.pushReplacement(
+        _context,
+        MaterialPageRoute(builder: (context) => const HomePage()),
+      );
     }
   }
 
   void doBack() {
     if (_content is PasswordLogin) {
-      if (_email != null) {
+      if (_isLoginByEmail) {
         _content = const EmailLogin();
-        _isEnableBTN = false;
+        emailListener();
         notifyListeners();
       } else {
         _content = const PhoneNumberLogin();
-        _isEnableBTN = false;
-
+        passwordListener();
         notifyListeners();
       }
     } else {
@@ -78,4 +92,12 @@ class LoginProvider extends ChangeNotifier {
   }
 
   void doForgotPassword() {}
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    phoneNumberController.dispose();
+    super.dispose();
+  }
 }

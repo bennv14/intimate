@@ -25,8 +25,18 @@ class PhoneNumberLogin extends StatelessWidget {
             height: 25.h,
           ),
           TextField(
+            controller: provider.phoneNumberController,
+            onSubmitted: (value) {
+              if (provider.isEnableBTN) {
+                provider.doContinue();
+              }
+            },
+            onTapOutside: (event) {
+              FocusScope.of(context).unfocus();
+            },
+            autocorrect: false,
+            keyboardType: TextInputType.phone,
             style: textStyle,
-            onChanged: (value) => provider.phoneNumber = value,
             decoration: InputDecoration(
               fillColor: textFieldBG,
               filled: true,

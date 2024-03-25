@@ -24,8 +24,18 @@ class PasswordLogin extends StatelessWidget {
             height: 25.h,
           ),
           TextField(
+            controller: provider.passwordController,
             style: textStyle,
-            onChanged: null,
+            onSubmitted: (value) {
+              if (provider.isEnableBTN) {
+                provider.doContinue();
+              }
+            },
+            onTapOutside: (event) {
+              FocusScope.of(context).unfocus();
+            },
+            enableSuggestions: false,
+            obscureText: true,
             decoration: InputDecoration(
               fillColor: textFieldBG,
               filled: true,

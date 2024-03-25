@@ -17,13 +17,9 @@ class LogInPage extends StatelessWidget {
   ///
   /// Returns a [GestureDetector] widget.
   Widget build(BuildContext context) {
-    return GestureDetector(
-      // Callback function to unfocus the primary focus if there is any.
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: ChangeNotifierProvider<LoginProvider>(
-        create: (context) => LoginProvider(context),
-        child: const LoginBody(),
-      ),
+    return ChangeNotifierProvider<LoginProvider>(
+      create: (context) => LoginProvider(context),
+      child: const LoginBody(),
     );
   }
 }

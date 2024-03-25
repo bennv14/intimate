@@ -16,7 +16,7 @@ class IconTitleApp extends StatelessWidget {
           height: 40.h,
           width: 40.w,
           child: Image.asset(
-            "assets/icons/logo_border.png",
+            "assets/icons/intimate_icon.png",
             fit: BoxFit.contain,
           ),
         ),

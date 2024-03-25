@@ -85,8 +85,8 @@ class LoginBody extends StatelessWidget {
       alignment: Alignment.topLeft,
       padding: EdgeInsets.only(top: 47.h, left: 17.w),
       child: CustomButton(
-        height: 50.h,
-        width: 50.w,
+        height: 45.h,
+        width: 45.h,
         shape: BoxShape.circle,
         fillColor: textFieldBG,
         onTap: provider.doBack,

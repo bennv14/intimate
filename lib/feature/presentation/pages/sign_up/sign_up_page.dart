@@ -8,13 +8,9 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      // Callback function to unfocus the primary focus if there is any.
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: ChangeNotifierProvider<SignUpProvider>(
-        create: (context) => SignUpProvider(context),
-        child: const SignUpBody(),
-      ),
+    return ChangeNotifierProvider<SignUpProvider>(
+      create: (context) => SignUpProvider(context),
+      child: const SignUpBody(),
     );
   }
 }

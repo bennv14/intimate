@@ -25,8 +25,19 @@ class EmailLogin extends StatelessWidget {
             height: 25.h,
           ),
           TextField(
+            controller: provider.emailController,
+            autocorrect: false,
+            enableSuggestions: false,
+            keyboardType: TextInputType.emailAddress,
             style: textStyle,
-            onChanged: (value) => provider.email = value,
+            onSubmitted: (value) {
+              if (provider.isEnableBTN) {
+                provider.doContinue();
+              }
+            },
+            onTapOutside: (event) {
+              FocusScope.of(context).unfocus();
+            },
             decoration: InputDecoration(
               fillColor: textFieldBG,
               filled: true,

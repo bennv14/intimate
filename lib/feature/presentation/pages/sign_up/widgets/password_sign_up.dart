@@ -22,8 +22,17 @@ class PasswordSignUp extends StatelessWidget {
             height: 25.h,
           ),
           TextField(
+            controller: provider.passwordController,
+            onSubmitted: (value) {
+              if (provider.isEnableBTN) {
+                provider.doContinue();
+              }
+            },
+            onTapOutside: (event) {
+              FocusScope.of(context).unfocus();
+            },
+            obscureText: true,
             style: textStyle,
-            onChanged: null,
             decoration: InputDecoration(
               fillColor: textFieldBG,
               filled: true,
@@ -46,7 +55,7 @@ class PasswordSignUp extends StatelessWidget {
               style: textStyle.copyWith(fontSize: 13.sp),
               children: [
                 TextSpan(
-                  text: "8 characters",
+                  text: "6 characters",
                   style: textStyle.copyWith(
                     color: primaryColor,
                     fontSize: 13.sp,

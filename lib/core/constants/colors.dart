@@ -6,5 +6,5 @@ const Color textColor = Color(0xFFffffff);
 const Color grayTextColor = Color(0xFFa2a2a2);
 const Color darkTextColor = Color(0xFF381e00);
 const Color hintColor = Color(0xFF8f8f8f);
-const Color textFieldBG = Color(0xFF222222);
-const Color grayButton = Color(0xFF242426);
+const Color textFieldBG = Color(0xFF2e2e2e);
+const Color grayButton = Color(0xFF242424);
